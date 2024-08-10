@@ -14,13 +14,13 @@ const LoginPage = () => {
       {/* nav bar end  */}
 
       {/* main sign in  */}
-      <div className="w-full min-h-full h-screen p-10 bg-black">
+      <div className="w-full min-h-screen h-full p-10 bg-black">
         {/*center  */}
         <div className="w-[30%] mx-auto outline-dashed rounded-md bg-[#171717] ">
           {/* div-1 -> sign and sign in with gogole and dash  */}
           <div className="">
             <h2 className="p-5 text-center text-2xl font-bold leading-9 tracking-tight text-white ">
-              Sign in
+              Sign Up
             </h2>
             <div className="mt-2 w-full px-5">
               <button className="flex justify-center text-white items-center gap-x-2 text-1xl capitalize  text-xl bg-[#171717] p-2 rounded-md w-full border border-2 border-[#36383f]  ">
@@ -30,7 +30,7 @@ const LoginPage = () => {
                   loading="lazy"
                   alt="google logo"
                 />
-                <span className="text-white">sign with Google</span>
+                <span className="text-white">sign up Google</span>
               </button>
             </div>
             <div className="flex justify-center items-center uppercase gap-x-1 mt-6">
