@@ -1,6 +1,20 @@
 import { SiGmail } from "react-icons/si";
+import { GoogleLogin } from "@react-oauth/google";
+import { jwtDecode } from "jwt-decode";
+import { useGoogleLogin } from "@react-oauth/google";
+import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { GlobalContext } from "../store/Store";
 
 const LoginPage = () => {
+  // navigate t a specific address
+  const { loginCredential, setLoginCredential } = useContext(GlobalContext);
+  const navigate = useNavigate();
+
+  const handleLogin = () => {
+    window.location.href =
+      "https://hiring.reachinbox.xyz/api/v1/auth/google-login?redirect_to=http://localhost:5173/auth"; // Your frontend URL
+  };
   return (
     <>
       <div className="flex justify-center items-center  bg-[#171717] p-4 border-b-2 border-b-gray-600">
@@ -23,7 +37,10 @@ const LoginPage = () => {
               Sign Up
             </h2>
             <div className="mt-2 w-full px-5">
-              <button className="flex justify-center text-white items-center gap-x-2 text-1xl capitalize  text-xl bg-[#171717] p-2 rounded-md w-full border border-2 border-[#36383f]  ">
+              <button
+                className="flex justify-center text-white items-center gap-x-2 text-1xl capitalize  text-xl bg-[#171717] p-2 rounded-md w-full border border-2 border-[#36383f]  "
+                onClick={handleLogin}
+              >
                 <img
                   className="w-6 h-6 flex "
                   src="https://www.svgrepo.com/show/475656/google-color.svg"
@@ -32,6 +49,18 @@ const LoginPage = () => {
                 />
                 <span className="text-white">sign up Google</span>
               </button>
+              {/* <GoogleLogin
+                onSuccess={(credentialResponse) => {
+                  const credentialResponse1 = jwtDecode(
+                    credentialResponse.credential
+                  );
+                  console.log(credentialResponse1);
+                }}
+                onError={() => {
+                  console.log("Login Failed");
+                }}
+              /> */}
+              ;
             </div>
             <div className="flex justify-center items-center uppercase gap-x-1 mt-6">
               <div className="h-[1px]  bg-white w-[20%]  "></div>
@@ -123,3 +152,16 @@ const LoginPage = () => {
 };
 
 export default LoginPage;
+
+// useGoogleLogin({
+//   // onSuccess: (tokenResponse) => {
+//   //   console.log(tokenResponse);
+//   //   setLoginCredential(tokenResponse);
+//   //   localStorage.setItem("accessToken", tokenResponse.access_token);
+//   //   navigate("/google_login");
+//   // },
+
+// });
+
+// curl --location 'https://hiring.reachinbox.xyz/api/v1/auth/google-login?redirect_to=https%3A%2F%2Ffrontend.com' \
+// --data ''
